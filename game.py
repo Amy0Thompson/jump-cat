@@ -39,7 +39,7 @@ while gameRunning:
         if event.type == pygame.QUIT: 
             gameRunning = False #prevent infinite loop / allow exit
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE and y_change == 0:
+            if event.key == pygame.K_UP and y_change == 0:
                 y_change = 18
             if event.key == pygame.K_RIGHT:
                 x_change = 4
