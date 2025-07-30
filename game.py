@@ -26,6 +26,7 @@ gameRunning = True
 while gameRunning:
     timer.tick(fps)
     screen.fill(background)
+    floor = pygame.draw.rect(screen, black [0, 200, width, 5])
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
             gameRunning = False #prevent infinite loop / allow exit
