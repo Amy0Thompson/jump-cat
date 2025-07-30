@@ -52,7 +52,7 @@ while gameRunning:
                 x_change = 0
 #movement
 
-    if 0 <= player_x <= 749:
+    if 0 <= player_x <= 650:
         player_x += x_change
     if player_x < 0:
         player_x = 0
