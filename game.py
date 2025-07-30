@@ -6,7 +6,7 @@ white = (255, 255, 255)
 black = (0 ,0, 0)
 #colors
 
-width = 500
+width = 750
 height = 500
 #dimensions
 
@@ -14,7 +14,7 @@ score = 0
 player_x = 50
 player_y = 200
 fps = 60
-background = white
+background = pygame.image.load('cat paws.png')
 timer = pygame.time.Clock()
 #game variables
 
@@ -25,11 +25,12 @@ pygame.display.set_caption('Jump Cat')
 gameRunning = True
 while gameRunning:
     timer.tick(fps)
-    screen.fill(background)
-    floor = pygame.draw.rect(screen, black [0, 200, width, 5])
+    screen.blit(background, (0,0))
+    floor = pygame.draw.rect(screen, black, [0, 400, width, 5])
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
             gameRunning = False #prevent infinite loop / allow exit
     pygame.display.flip()
-pygame.quit()
+    
+pygame.quit() 
     
