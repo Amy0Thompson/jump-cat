@@ -4,7 +4,8 @@ pygame.init()
 
 white = (255, 255, 255)
 black = (0 ,0, 0)
-#colors
+bg = pygame.image.load('cat hands.jpg')
+#colors and images
 
 width = 750
 height = 500
@@ -14,7 +15,7 @@ score = 0
 player_x = 50
 player_y = 200
 fps = 60
-background = pygame.image.load('cat paws.png')
+background = pygame.transform.scale(bg, (width, height))
 timer = pygame.time.Clock()
 #game variables
 
