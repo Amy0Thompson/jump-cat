@@ -15,6 +15,8 @@ height = 500
 score = 0
 player_x = 50
 player_y = 300
+y_change = 0
+gravity = 1
 fps = 60
 background = pygame.transform.scale(bg, (width, height))
 timer = pygame.time.Clock()
@@ -35,6 +37,18 @@ while gameRunning:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
             gameRunning = False #prevent infinite loop / allow exit
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE and y_change == 0:
+                y_change = 18
+    if y_change > 0 or player_y < 300:
+        player_y -= y_change
+        y_change -= gravity
+    if player_y > 300:
+        player_y = 300 #preventing glitching through floor
+    if player_y == 300 and y_change < 0:
+        y_change = 0
+#movement
+            
     pygame.display.flip()
     
 pygame.quit() 
