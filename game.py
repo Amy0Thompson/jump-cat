@@ -2,10 +2,10 @@ import random #for RNG
 import pygame
 pygame.init()
 
-white = (255, 255, 255)
 black = (0 ,0, 0)
 bg = pygame.image.load('cat hands.jpg')
 jumping_cat = pygame.image.load('pixel cat.png')
+bad_dogs = pygame.image.load('pixel dog.png')
 #colors and images
 
 width = 750
@@ -22,6 +22,10 @@ fps = 60
 background = pygame.transform.scale(bg, (width, height))
 timer = pygame.time.Clock()
 player_image = pygame.transform.scale(jumping_cat, (100, 100))
+enemies_image = pygame.transform.scale(bad_dogs, (100, 100))
+enemies = [300, 450, 600]
+enemies_speed = 3
+alive = True
 #game variables
 
 screen = pygame.display.set_mode((width, height))
@@ -34,6 +38,10 @@ while gameRunning:
     screen.blit(background, (0,0))
     floor = pygame.draw.rect(screen, black, [0, 400, width, 5])
     player = screen.blit(player_image, (player_x, player_y))
+    enemy0 = screen.blit(enemies_image, (enemies[0], 300))
+    enemy1 = screen.blit(enemies_image, (enemies[1], 300))
+    enemy2 = screen.blit(enemies_image, (enemies[2], 300))
+    
     pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
