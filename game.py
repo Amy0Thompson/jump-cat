@@ -26,7 +26,7 @@ player_image = pygame.transform.scale(jumping_cat, (50, 75))
 enemies_image = pygame.transform.scale(bad_dogs, (25, 50))
 enemies = [300, 450, 600]
 enemies_speed = 2
-alive = True
+alive = False
 font = pygame.font.Font('FreeSansBold.ttf', 16)
 #game variables
 
@@ -67,7 +67,13 @@ while gameRunning:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
             gameRunning = False #prevent infinite loop / allow exit
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYDOWN and not alive: 
+            if event.key == pygame.K_SPACE: 
+                enemies = [300, 450, 600]
+                player_x = 50
+                score = 0
+                alive = True
+        if event.type == pygame.KEYDOWN and alive:
             if event.key == pygame.K_UP and y_change == 0:
                 y_change = 18
             if event.key == pygame.K_RIGHT:
