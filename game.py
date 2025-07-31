@@ -96,12 +96,12 @@ while gameRunning:
             if player.colliderect(enemy0) or player.colliderect(enemy1) or player.colliderect(enemy2):
                 alive = False
 
-    if 0 <= player_x <= 650:
+    if 0 <= player_x <= 700:
         player_x += x_change
     if player_x < 0:
         player_x = 0
-    if player_x > 650:
-        player_x = 650
+    if player_x > 700:
+        player_x = 700
 #boundaries
                 
     if y_change > 0 or player_y < 325:
