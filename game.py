@@ -24,7 +24,7 @@ timer = pygame.time.Clock()
 player_image = pygame.transform.scale(jumping_cat, (100, 100))
 enemies_image = pygame.transform.scale(bad_dogs, (100, 100))
 enemies = [300, 450, 600]
-enemies_speed = 3
+enemies_speed = 2
 alive = True
 #game variables
 
@@ -50,15 +50,24 @@ while gameRunning:
             if event.key == pygame.K_UP and y_change == 0:
                 y_change = 18
             if event.key == pygame.K_RIGHT:
-                x_change = 4
+                x_change = 6 #player speed
             if event.key == pygame.K_LEFT:
-                x_change = -4
+                x_change = -6 #player speed
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 x_change = 0
             if event.key == pygame.K_LEFT:
                 x_change = 0
-#movement
+#player movement
+
+    for i in range(len(enemies)):
+        if alive:
+            enemies[i] -= enemies_speed
+            if enemies[i] < -20:
+                enemies[i] = random.randint(750, 850)
+                score += 1
+            if player.colliderect(enemy0) or player.colliderect(enemy1) or player.colliderect(enemy2):
+                active = False
 
     if 0 <= player_x <= 650:
         player_x += x_change
@@ -80,4 +89,6 @@ while gameRunning:
     pygame.display.flip()
     
 pygame.quit() 
+    
+    
     
