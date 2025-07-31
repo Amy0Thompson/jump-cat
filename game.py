@@ -37,10 +37,25 @@ while gameRunning:
     timer.tick(fps)
     screen.blit(background, (0,0))
     floor = pygame.draw.rect(screen, black, [0, 400, width, 5])
-    player = screen.blit(player_image, (player_x, player_y))
-    enemy0 = screen.blit(enemies_image, (enemies[0], 300))
-    enemy1 = screen.blit(enemies_image, (enemies[1], 300))
-    enemy2 = screen.blit(enemies_image, (enemies[2], 300))
+    player_rect = player_image.get_rect()
+    player_rect.x = player_x
+    player_rect.y = player_y
+    player = screen.blit(player_image, player_rect)
+#add player to display as rect
+    
+    enemy0_rect = enemies_image.get_rect()
+    enemy0_rect.x = enemies[0]
+    enemy0_rect.y = 300
+    enemy0 = screen.blit(enemies_image, enemy0_rect)
+    enemy1_rect = enemies_image.get_rect()
+    enemy1_rect.x = enemies[1]
+    enemy1_rect.y = 300
+    enemy1 = screen.blit(enemies_image, enemy1_rect)
+    enemy2_rect = enemies_image.get_rect()
+    enemy2_rect.x = enemies[1]
+    enemy2_rect.y = 300
+    enemy2 = screen.blit(enemies_image, enemy2_rect)
+#add enemies to display as rect
     
     pygame.display.update()
     for event in pygame.event.get():
@@ -67,7 +82,7 @@ while gameRunning:
                 enemies[i] = random.randint(750, 850)
                 score += 1
             if player.colliderect(enemy0) or player.colliderect(enemy1) or player.colliderect(enemy2):
-                active = False
+                alive = False
 
     if 0 <= player_x <= 650:
         player_x += x_change
@@ -89,6 +104,3 @@ while gameRunning:
     pygame.display.flip()
     
 pygame.quit() 
-    
-    
-    
